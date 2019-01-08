@@ -17,7 +17,7 @@
         "commands": [
             {
                 "command": "extension.copyPathRelative",
-                "title": "Copy relative file / pinglinh"
+                "title": "Copy relative file path"
             }
         ],
         "menus": {
