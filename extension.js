@@ -12,18 +12,16 @@ function activate(context) {
 
       if (activeEditor) {
         rootPath = activeEditor.document.fileName.replace(/[^\/]$/, "");
-        vscode.window.showInformationMessage("this is the rootPath", rootPath);
       } else if (vscode.workspace.rootPath) {
         rootPath = vscode.workspace.rootPath;
-        vscode.window.showInformationMessage("this is the rootPath", rootPath);
       } else {
-        // no root, so just copy the whole thing
         rootPath = "";
-        vscode.window.showInformationMessage("this is the rootPath", rootPath);
       }
       let relPath = relative(rootPath, target);
+      if (!relPath.includes("/")) {
+        relPath = "./" + relPath;
+      }
       clipboardy.writeSync(relPath);
-      vscode.window.showInformationMessage("this is relPath:", relPath);
     }
   );
 
